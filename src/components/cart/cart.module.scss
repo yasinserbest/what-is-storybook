@@ -1,0 +1,149 @@
+@mixin radioButtonCircle {
+  & :global(.ant-radio) {
+    div:first-child {
+      display: none;
+    }
+
+    & span:global(.ant-radio-inner) {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-color: #8e9fad;
+      transition: none;
+
+      &::after {
+        transition: none;
+      }
+    }
+  }
+  & :global(.ant-radio-checked) {
+    & div {
+      display: none;
+    }
+    &::after {
+      border: none;
+    }
+
+    & span:global(.ant-radio-inner) {
+      background-color: #fff;
+      &::after {
+        transform: scale(1);
+        background-color: #1877ff;
+        transition: none;
+        width: 0.875rem;
+        height: 0.875rem;
+        margin-block-start: -0.4375rem;
+        margin-inline-start: -0.4375rem;
+        border: none;
+      }
+    }
+  }
+}
+
+@mixin setRadioButtonNamePadding($inlinePaddingStart: 0) {
+  &:global(.ant-radio-wrapper) > span:last-child {
+    padding-inline-end: 0;
+    padding-inline-start: $inlinePaddingStart;
+  }
+}
+
+.cart {
+  position: relative;
+  overflow: hidden;
+  margin-inline-end: 0;
+  border-radius: 0.625rem;
+
+  @include radioButtonCircle;
+  @include setRadioButtonNamePadding();
+
+  & :global(.ant-radio) {
+    position: absolute;
+    z-index: 2;
+    display: none;
+  }
+
+  &::after {
+    display: none;
+  }
+
+  &__checked {
+    outline: 2px solid #1877ff;
+    & :global(.ant-radio) {
+      display: block;
+    }
+  }
+
+  &__circle {
+    z-index: 1;
+    border-radius: 50%;
+    position: absolute;
+    height: 6rem;
+    width: 6rem;
+    background-color: #1877ff;
+  }
+
+  &__top-right {
+    & :global(.ant-radio) {
+      top: 0.3125rem;
+      right: 0.3125rem;
+      display: block;
+    }
+    & .cart__circle {
+      top: -3rem;
+      right: -3rem;
+    }
+  }
+
+  &__top-left {
+    & :global(.ant-radio) {
+      top: 0.3125rem;
+      left: 0.3125rem;
+      display: block;
+    }
+    & .cart__circle {
+      top: -3rem;
+      left: -3rem;
+    }
+  }
+
+  &__bottom-right {
+    & :global(.ant-radio) {
+      bottom: 0.3125rem;
+      right: 0.3125rem;
+      display: block;
+    }
+    & .cart__circle {
+      bottom: -3rem;
+      right: -3rem;
+    }
+  }
+
+  &__bottom-left {
+    & :global(.ant-radio) {
+      bottom: 0.3125rem;
+      left: 0.3125rem;
+      display: block;
+    }
+    & .cart__circle {
+      bottom: -3rem;
+      left: -3rem;
+    }
+  }
+}
+
+.cart__vertical {
+  width: 200px;
+  height: 350px;
+  background-color: #ff4785;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 10px;
+}
+
+.cart__horizontal {
+  width: 350px;
+  height: 200px;
+  background-color: #ff4785;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 10px;
+}
